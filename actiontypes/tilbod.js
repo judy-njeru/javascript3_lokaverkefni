@@ -1,0 +1,2 @@
+export const FETCH_AHA_TILBOD = 'tilbod/FETCH_AHA_TILBOD';
+export const FETCH_HOPKAUP_TILBOD = 'tilbod/FETCH_HOPKAUP_TILBOD';

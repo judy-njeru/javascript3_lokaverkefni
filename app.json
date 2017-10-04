@@ -1,0 +1,14 @@
+{
+  "expo": {
+   "name": "tilbod",
+   "version": "1.0.0",
+   "slug": "rnplay",
+   "sdkVersion": "20.0.0",
+   "ios": {
+     "bundleIdentifier": "tskoli.rnplay.exp"
+   },
+   "android": {
+     "package": "tskoli.rnplay.exp"
+   }
+  }
+}
