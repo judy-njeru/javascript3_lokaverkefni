@@ -30,33 +30,36 @@ class AhaTilbod extends Component {
     }
 
     return (
-      <View style={{flex: 1, flexDirection: 'column', paddingTop: 0}}>
-          {
-            this.props.ahatilbods.map((tilbod, i) => {
-              return(
-                <View style={styles.showContainer} key={i}>
-                  <TouchableHighlight onPress={() => { Linking.openURL(tilbod.link) }}>
-                  <Image
-                    style={{width: 400, height: 250}}
-                    source={{uri:tilbod.image}}>
-                    <View style={{backgroundColor:'rgba(236, 239, 241, 0.8);' ,height:80, top: 120, marginTop: 50}}>
-                        <Text style={styles.titleStyle}>
-                          {tilbod.title}
-                        </Text>
+        this.props.showtilbod ==="aha" ?(
+          <View style={{flex: 1, flexDirection: 'column', paddingTop: 0}}>
+              {
+                this.props.ahatilbods.map((tilbod, i) => {
+                  return(
+                    <View style={styles.showContainer} key={i}>
+                      <TouchableHighlight onPress={() => { Linking.openURL(tilbod.link) }}>
+                      <Image
+                        style={{width: 400, height: 250}}
+                        source={{uri:tilbod.image}}>
+                        <View style={{backgroundColor:'rgba(236, 239, 241, 0.8);' ,height:80, top: 120, marginTop: 50}}>
+                            <Text style={styles.titleStyle}>
+                              {tilbod.title}
+                            </Text>
 
+                        </View>
+                        <View style={styles.priceStyle}>
+                          <Text style={styles.priceFont}>
+                            {tilbod.price}
+                          </Text>
+                        </View>
+                      </Image>
+                      </TouchableHighlight>
                     </View>
-                    <View style={styles.priceStyle}>
-                      <Text style={styles.priceFont}>
-                        {tilbod.price}
-                      </Text>
-                    </View>
-                  </Image>
-                  </TouchableHighlight>
-                </View>
-              );
-            })
-          }
-      </View>
+                  );
+                })
+            }
+          </View>
+          )
+          :null
     );
   }
 }
@@ -67,6 +70,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection:"column",
     marginBottom:50,
+    marginTop:10,
     shadowColor: 'grey',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.8,
@@ -89,7 +93,7 @@ priceStyle: {
   backgroundColor:'#cc181e',
   width: 120,
   height: 50,
-  marginTop:-99.9,
+  marginTop:-129.9,
   marginLeft:-10,
   paddingTop:10,
   paddingLeft:20,
@@ -107,7 +111,8 @@ priceFont: {
 
 const mapStateToProps = (state) => {
   return {
-    ahatilbods: state.tilbod.ahatilbods,
+    ahatilbods: state.ahatilbods,
+    showtilbod: state.showtilbod,
   }
 }
 

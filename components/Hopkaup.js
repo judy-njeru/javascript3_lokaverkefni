@@ -30,40 +30,42 @@ class HopkaupTilbod extends Component {
         );
       }
 
-        console.log(this.props)
     return (
-      <View style={{flex: 1, flexDirection: 'column', paddingTop: 0}}>
-          {
-            this.props.hopkauptilbods.map((hopkauptilbod, i) => {
-                if( !hopkauptilbod.price || !hopkauptilbod.link){
-                  return null;
-                }
-              const Picture = 'https://www.hopkaup.is/' + hopkauptilbod.images.slice(25, -2);
+      this.props.showtilbod ==="hopkaup" ?(
+        <View style={{flex: 1, flexDirection: 'column', paddingTop: 0}}>
+            {
+              this.props.hopkauptilbods.map((hopkauptilbod, i) => {
+                  if( !hopkauptilbod.price || !hopkauptilbod.link){
+                    return null;
+                  }
+                const Picture = 'https://www.hopkaup.is/' + hopkauptilbod.images.slice(25, -2);
 
-              return(
-                <View style={styles.showContainer} key={i}>
-                  <TouchableHighlight onPress={() => { Linking.openURL(hopkauptilbod.link) }}>
-                  <Image
-                    style={{width: 400, height: 250}}
-                    source={{uri:Picture}}>
-                    <View style={{backgroundColor:'rgba(236, 239, 241, 0.8);' ,height:50, top: 150, marginTop: 50}}>
-                        <Text style={styles.titleStyle}>
-                          {hopkauptilbod.title}
+                return(
+                  <View style={styles.showContainer} key={i}>
+                    <TouchableHighlight onPress={() => { Linking.openURL(hopkauptilbod.link) }}>
+                    <Image
+                      style={{width: 400, height: 250}}
+                      source={{uri:Picture}}>
+                      <View style={{backgroundColor:'rgba(236, 239, 241, 0.8);' ,height:50, top: 150, marginTop: 50}}>
+                          <Text style={styles.titleStyle}>
+                            {hopkauptilbod.title}
+                          </Text>
+
+                      </View>
+                      <View style={styles.priceStyle}>
+                        <Text style={styles.priceFont}>
+                          {hopkauptilbod.price}
                         </Text>
-
-                    </View>
-                    <View style={styles.priceStyle}>
-                      <Text style={styles.priceFont}>
-                        {hopkauptilbod.price}
-                      </Text>
-                    </View>
-                  </Image>
-                  </TouchableHighlight>
-                </View>
-              );
-            })
-          }
-      </View>
+                      </View>
+                    </Image>
+                    </TouchableHighlight>
+                  </View>
+                );
+              })
+            }
+        </View>
+    )
+    :null
     );
   }
 }
@@ -73,6 +75,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection:"column",
     marginBottom:50,
+    marginTop:10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.8,
@@ -110,7 +113,8 @@ priceFont: {
 });
 const mapStateToProps = (state) => {
   return {
-    hopkauptilbods: state.tilbod.hopkauptilbods,
+    hopkauptilbods: state.hopkauptilbods,
+    showtilbod: state.showtilbod,
   }
 }
 

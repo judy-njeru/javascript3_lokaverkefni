@@ -4,7 +4,7 @@ import * as navactiontypes from '../actiontypes/navigation';
 const initialiseTilbodReducer = {
   ahatilbods: [],
   hopkauptilbods: [],
-  showtilbod:""
+  showtilbod:"aha"
 }
 
 export default function tilbod(state=initialiseTilbodReducer, action){

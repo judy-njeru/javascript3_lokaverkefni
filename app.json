@@ -1,6 +1,7 @@
 {
   "expo": {
-   "name": "tilbod",
+   "name": "tilbod dagsins",
+   "icon": "./offer.png",
    "version": "1.0.0",
    "slug": "rnplay",
    "sdkVersion": "20.0.0",

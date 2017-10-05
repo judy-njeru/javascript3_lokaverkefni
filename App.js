@@ -3,15 +3,15 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { Provider } from 'react-redux';
 
 import * as actionCreators from './actions/tilbod';
-import configureStore from './store/configureStore';
-import AppWithNavigationState from './AppWithNavigationState'
+import tilbod from './reducers/tilbod'
+import HomeScreenContainer from './containers/HomeScreenContainer'
 
-
-export const store  = configureStore()
+import {createStore} from 'redux'
+const store = createStore(tilbod);
 
 export default () => (
   <Provider store={store}>
-    <AppWithNavigationState />
+    <HomeScreenContainer />
   </Provider>
 );
 
